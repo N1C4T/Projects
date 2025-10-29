@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🍅 Tomato Disease Classifier</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🍅 Tomato Disease Classifier</h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <button id="predictBtn">Predict Disease</button>
+
+    <div id="previewContainer">
+      <img id="preview" />
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const API_URL = "https://predict-uo5wxnwlza-uc.a.run.app";
+
+    const predictBtn = document.getElementById("predictBtn");
+    predictBtn.addEventListener("click", async () => {
+      const file = document.getElementById("fileInput").files[0];
+      if (!file) return alert("Please upload an image first.");
+
+      document.getElementById("result").innerText = "Analyzing...";
+      const preview = document.getElementById("preview");
+      preview.src = URL.createObjectURL(file);
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          body: formData
+        });
+        const data = await response.json();
+        if (data.error) {
+          document.getElementById("result").innerText = "Error: " + data.error;
+        } else {
+          document.getElementById("result").innerText =
+            `Result: ${data.Class}\nConfidence: ${data.Confidence}%`;
+        }
+      } catch (err) {
+        document.getElementById("result").innerText = "Error: " + err;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+tensorflow>=2.12
+google-cloud-storage>=2.10.0
+Pillow>=9.0.0
+numpy
+functions-framework
