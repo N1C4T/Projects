@@ -1,7 +1,7 @@
 🍅 Tomato Leaf Disease Detection
 
 This project uses deep learning (CNN) to detect diseases in tomato leaves from images.
-The model was trained using the PlantVillage dataset and deployed on Google Cloud with a Flask API for real-time predictions.
+The model was trained using the PlantVillage dataset from Kaggle and deployed on Google Cloud with a Flask API for real-time predictions.
 
 📘 Overview
 
@@ -15,7 +15,7 @@ The trained CNN model (tomatoes.h5) classifies leaf images into multiple disease
 
 🧹 Data Preprocessing & Augmentation for better generalization
 
-📈 High accuracy (>90%) on test data
+📈 High accuracy (>85%) on test data
 
 🌐 Flask API for serving predictions
 
